@@ -6,14 +6,16 @@ import CardContainer from './CardContainer'
 import Timer from './Timer'
 import Settings from './Settings'
 import Endgame from './Endgame'
+import audios from './Datas/audios'
+import apiurl from './Datas/apiurl'
 
 class Game extends React.Component {
 
   constructor(){
     super()
       
-    this.correctSound = new Audio('http://tepsite.xyz/api/sounds/correct.mp3')
-    this.wrongSound = new Audio('http://tepsite.xyz/api/sounds/wrong.mp3')
+    this.correctSound = audios.correct;
+    this.wrongSound = audios.wrong;
 
     this.buttonDownStyle = {boxShadow: '-2px -2px 4px'}
     this.buttonUpStyle = {boxshadow: '2px 2px 7px'}
@@ -61,7 +63,7 @@ class Game extends React.Component {
 
   componentDidMount() {
     this.setState({loading: true})
-    fetch("http://tepsite.xyz/api/cards")
+    fetch(apiurl)
             .then(response => response.json())
             .then(response => {
                 const allCards = response
