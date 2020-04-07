@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: .
+    restart: always
+    ports:
+      - 1337:80
+    networks:
+      - www
+
+networks:
+  www:
